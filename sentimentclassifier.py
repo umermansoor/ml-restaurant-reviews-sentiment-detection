@@ -37,7 +37,8 @@ positive_words_tf_x = tf_transformer.transform(positive_words_x)
 predicted = clf.predict(positive_words_tf_x)
 
 for doc, category in zip(positive_reviews, predicted):
-    print('%s => %r' % (categories[category], doc[:120] + '...' if  len(doc) > 120 else doc ))
+    print('%s => %r' % (':)' if categories[category] == '1' else ':@',
+                             doc[:120] + '...' if  len(doc) > 120 else doc ))
     total_samples += 1
     if categories[category] == '0':
         mistakes += 1
@@ -50,7 +51,8 @@ negative_words_tf_x = tf_transformer.transform(negative_words_x)
 predicted = clf.predict(negative_words_tf_x)
 
 for doc, category in zip(negative_reviews, predicted):
-    print('%s => %r' % (categories[category], doc[:120] + '...' if  len(doc) > 120 else doc ))
+    print('%s => %r' % (':)' if categories[category] == '1' else ':@',
+                        doc[:120] + '...' if  len(doc) > 120 else doc ))
     total_samples += 1
     if categories[category] == '1':
         mistakes += 1
